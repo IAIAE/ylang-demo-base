@@ -18,7 +18,7 @@ browser-sync start --server --files "**/*.html, **/*.css, **/*.js"
 # 原理
 页面打开后会看到正常渲染的页面，点击按钮加载异步组件，会加载组件，组件的url配置在`src/app.tsx`的`onclick`事件中，由于url是无效的，所以点击按钮后会显示无效组件。
 
-新建另一个文件夹(在此工程外)，clone工程[ylang-demo-page1]()，安装依赖后`npm run build`，在dist文件夹中找到`page1.xxx.js`和`page1.xxx.css`两个文件，拷贝到该工程的dist文件夹中，更改onclick中的组件url。你就会发现page1组件可以正常加载。
+新建另一个文件夹(在此工程外)，clone工程[ylang-demo-page1](https://github.com/IAIAE/ylang-demo-page1)，安装依赖后`npm run build`，在dist文件夹中找到`page1.xxx.js`和`page1.xxx.css`两个文件，拷贝到该工程的dist文件夹中，更改onclick中的组件url。你就会发现page1组件可以正常加载。
 
 # why
 为什么要这样做呢？你会发现，一个页面被拆分成了两个工程，`demo-base`和`demo-page1`，它们之间完全相互独立。`demo-page1`中打包的组件结果，放到线上，base可以通过url的方式加载并渲染这个组件。这在之前，高度模块化的前端打包是无法实现的。ok，让我们先列举一下我们能做到的特性：
